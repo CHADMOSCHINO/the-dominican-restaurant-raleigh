@@ -2,22 +2,24 @@ import React, { useState } from 'react';
 import { MENU_DATA, BUSINESS_INFO } from '../constants';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingBag, Star, Calendar, Coffee, Beer, Utensils } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 type Category = 'specials' | 'mofongo' | 'street' | 'breakfast' | 'drinks';
 
 const MenuSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<Category>('specials');
   const [promoImageOk, setPromoImageOk] = useState(true);
+  const { t } = useLanguage();
 
   // Place the provided image at: public/Dominican_Restaurant_1_.png
   const promoImageSrc = '/Dominican_Restaurant_1_.png';
 
   const categories = [
-    { id: 'specials', label: 'Weekly Specials', icon: Calendar },
-    { id: 'mofongo', label: 'Mofongo & Mains', icon: Utensils },
-    { id: 'street', label: 'Street Food', icon: Star },
-    { id: 'breakfast', label: 'Breakfast & Lite', icon: Coffee },
-    { id: 'drinks', label: 'Drinks & Sides', icon: Beer },
+    { id: 'specials', label: t('menu.cat.specials'), icon: Calendar },
+    { id: 'mofongo', label: t('menu.cat.mofongo'), icon: Utensils },
+    { id: 'street', label: t('menu.cat.street'), icon: Star },
+    { id: 'breakfast', label: t('menu.cat.breakfast'), icon: Coffee },
+    { id: 'drinks', label: t('menu.cat.drinks'), icon: Beer },
   ];
 
   return (
@@ -26,11 +28,11 @@ const MenuSection: React.FC = () => {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-brand-red font-bold tracking-widest uppercase text-sm">Authentic Cuisine</span>
-          <h2 className="font-serif text-5xl font-bold text-brand-dark mt-3 mb-6">Our Menu</h2>
+          <span className="text-brand-red font-bold tracking-widest uppercase text-sm">{t('menu.tagline')}</span>
+          <h2 className="font-serif text-5xl font-bold text-brand-dark mt-3 mb-6">{t('menu.title')}</h2>
           <p className="text-gray-500 text-lg">
-            From our famous Mangu 3 Golpes to fresh Seafood Mofongos. <br />
-            Explore the authentic flavors of the Dominican Republic.
+            {t('menu.description')} <br />
+            {t('menu.description2')}
           </p>
           <a 
             href={BUSINESS_INFO.onlineOrderLink}
@@ -38,7 +40,7 @@ const MenuSection: React.FC = () => {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 mt-6 text-brand-red font-bold hover:underline"
           >
-            Order Online for Pickup or Delivery <ShoppingBag size={18}/>
+            {t('menu.orderLink')} <ShoppingBag size={18}/>
           </a>
         </div>
 
@@ -87,7 +89,7 @@ const MenuSection: React.FC = () => {
                       ))}
                     </ul>
                     <div className="mt-4 pt-3 border-t border-dashed border-gray-300">
-                      <p className="text-xs text-gray-500 italic">Served with Rice (White/Moro) & Salad</p>
+                      <p className="text-xs text-gray-500 italic">{t('menu.servedWith')}</p>
                     </div>
                   </div>
                 ))}
@@ -100,7 +102,7 @@ const MenuSection: React.FC = () => {
                 <div>
                   <h3 className="text-2xl font-bold text-brand-dark mb-6 flex items-center gap-3">
                     <span className="w-8 h-1 bg-brand-red rounded-full"></span>
-                    Signature Mofongos
+                    {t('menu.sub.mofongos')}
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
                     {MENU_DATA.mofongo.map((item, i) => (
@@ -118,7 +120,7 @@ const MenuSection: React.FC = () => {
                 <div>
                   <h3 className="text-2xl font-bold text-brand-dark mb-6 flex items-center gap-3">
                     <span className="w-8 h-1 bg-brand-blue rounded-full"></span>
-                    Seafood & Meats
+                    {t('menu.sub.seafood')}
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
                     {MENU_DATA.mains.map((item, i) => (
@@ -169,7 +171,7 @@ const MenuSection: React.FC = () => {
                   
                   {/* Kids Menu Box */}
                   <div className="bg-brand-cream p-6 rounded-xl border-2 border-dashed border-brand-red/20 md:col-span-2 mt-4">
-                    <h4 className="font-bold text-xl text-brand-red mb-4 text-center">Kids Menu & Extras</h4>
+                    <h4 className="font-bold text-xl text-brand-red mb-4 text-center">{t('menu.sub.kids')}</h4>
                     <div className="flex flex-wrap justify-center gap-6 text-sm md:text-base">
                       <span className="bg-white px-3 py-1 rounded shadow-sm">Chicken Fingers w/ Fries: $10.00</span>
                       <span className="bg-white px-3 py-1 rounded shadow-sm">Mini Chimi Burger: $8.00</span>
@@ -196,9 +198,9 @@ const MenuSection: React.FC = () => {
                 ) : (
                   <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-8 rounded-2xl shadow-xl text-center mb-10 relative overflow-hidden">
                     <div className="relative z-10">
-                      <h3 className="font-serif text-3xl font-bold mb-2">Beer Bucket Special</h3>
+                      <h3 className="font-serif text-3xl font-bold mb-2">{t('menu.beerSpecial')}</h3>
                       <p className="text-5xl font-black text-yellow-400 drop-shadow-md mb-2">6 for $25.00</p>
-                      <p className="text-blue-100 font-medium tracking-widest">MONDAY - WEDNESDAY</p>
+                      <p className="text-blue-100 font-medium tracking-widest">{t('menu.beerDays')}</p>
                       <div className="mt-4 flex flex-wrap justify-center gap-2 text-xs opacity-80">
                         <span className="border border-white/30 px-2 py-1 rounded">Corona</span>
                         <span className="border border-white/30 px-2 py-1 rounded">Heineken</span>
@@ -235,7 +237,7 @@ const MenuSection: React.FC = () => {
             className="inline-flex items-center gap-2 bg-brand-red text-white px-8 py-4 rounded-full font-bold shadow-lg shadow-brand-red/30 hover:bg-red-700 transition-colors"
             >
             <ShoppingBag size={20} />
-            Place Order Online
+            {t('menu.placeOrder')}
             </a>
         </div>
       </div>

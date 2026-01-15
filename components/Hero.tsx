@@ -2,9 +2,11 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { BUSINESS_INFO } from '../constants';
 import { ChevronRight, Star } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 const Hero: React.FC = () => {
   const ref = useRef(null);
+  const { t } = useLanguage();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"]
@@ -47,19 +49,19 @@ const Hero: React.FC = () => {
             <Star size={16} fill="currentColor" />
             <Star size={16} fill="currentColor" />
             <Star size={16} fill="currentColor" />
-            <span className="text-white text-xs font-bold tracking-widest uppercase ml-2 bg-white/10 px-3 py-1 rounded-full backdrop-blur">Raleigh's #1 Caribbean Spot</span>
+            <span className="text-white text-xs font-bold tracking-widest uppercase ml-2 bg-white/10 px-3 py-1 rounded-full backdrop-blur">{t('hero.badge')}</span>
           </motion.div>
 
           <h1 className="font-serif text-6xl md:text-8xl font-bold mb-6 leading-tight tracking-tight drop-shadow-2xl">
-            Taste of the <br />
+            {t('hero.title1')} <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-red-400 to-yellow-500">
-              Dominican Republic
+              {t('hero.title2')}
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-200 mb-10 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-md">
-            Authentic Mofongo, Crispy Pernil, and Fresh Seafood. <br className="hidden md:block"/>
-            Experience the vibrant heart of the Caribbean right here in NC.
+            {t('hero.subtitle')} <br className="hidden md:block"/>
+            {t('hero.subtitle2')}
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
@@ -72,17 +74,17 @@ const Hero: React.FC = () => {
               className="w-full sm:w-auto px-10 py-5 bg-brand-red text-white rounded-full font-bold text-xl shadow-lg shadow-brand-red/40 flex items-center justify-center gap-2 group relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-              <span className="relative z-10">Order Delivery/Pickup</span>
+              <span className="relative z-10">{t('hero.orderBtn')}</span>
               <ChevronRight size={22} className="relative z-10 group-hover:translate-x-1 transition-transform" />
             </motion.a>
             
             <motion.a 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="#menu"
+              href="/menu"
               className="w-full sm:w-auto px-10 py-5 bg-white/5 backdrop-blur-md border border-white/20 text-white rounded-full font-bold text-xl hover:bg-white/10 transition-colors"
             >
-              View Menu
+              {t('hero.menuBtn')}
             </motion.a>
           </div>
         </motion.div>

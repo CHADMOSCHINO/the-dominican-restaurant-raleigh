@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import { ShoppingBag } from 'lucide-react';
 import { BUSINESS_INFO } from './constants';
 import { motion } from 'framer-motion';
+import { LanguageProvider, useLanguage } from './context/LanguageContext';
 
 // Lazy load pages for code splitting
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -12,14 +13,16 @@ const MenuPage = lazy(() => import('./pages/MenuPage'));
 const GalleryPage = lazy(() => import('./pages/GalleryPage'));
 
 // Loading fallback component
-const PageLoader: React.FC = () => (
-  <div className="min-h-screen flex items-center justify-center bg-brand-cream">
-    <div className="text-center">
-      <div className="w-12 h-12 border-4 border-brand-red border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-      <p className="text-brand-dark font-medium">Loading...</p>
+const PageLoader: React.FC = () => {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-brand-cream">
+      <div className="text-center">
+        <div className="w-12 h-12 border-4 border-brand-red border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+        <p className="text-brand-dark font-medium">Loading...</p>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
@@ -29,9 +32,12 @@ const ScrollToTop: React.FC = () => {
   return null;
 };
 
-function App() {
+// Inner app component that uses language context
+const AppContent: React.FC = () => {
+  const { t } = useLanguage();
+  
   return (
-    <BrowserRouter>
+    <>
       <ScrollToTop />
       <div className="min-h-screen bg-brand-cream selection:bg-brand-red selection:text-white">
         <Header />
@@ -62,12 +68,22 @@ function App() {
               className="flex items-center justify-center gap-3 bg-brand-dark text-white py-4 px-6 rounded-full font-bold text-lg border border-white/10 shadow-2xl active:scale-95 transition-transform"
             >
               <ShoppingBag className="text-brand-red flex-shrink-0" size={22} />
-              <span>Order Online Now</span>
+              <span>{t('cta.orderNow')}</span>
             </a>
           </motion.div>
         </div>
       </div>
-    </BrowserRouter>
+    </>
+  );
+};
+
+function App() {
+  return (
+    <LanguageProvider>
+      <BrowserRouter>
+        <AppContent />
+      </BrowserRouter>
+    </LanguageProvider>
   );
 }
 

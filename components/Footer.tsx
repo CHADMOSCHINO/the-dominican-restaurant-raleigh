@@ -1,9 +1,19 @@
 import React from 'react';
-import { BUSINESS_INFO, NAV_LINKS } from '../constants';
+import { BUSINESS_INFO } from '../constants';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 
 const Footer: React.FC = () => {
   const [logoSrc, setLogoSrc] = React.useState(BUSINESS_INFO.logo);
+  const { t } = useLanguage();
+
+  const navLinks = [
+    { name: t('nav.home'), href: '/' },
+    { name: t('nav.menu'), href: '/menu' },
+    { name: t('nav.order'), href: BUSINESS_INFO.onlineOrderLink },
+    { name: t('nav.gallery'), href: '/gallery' },
+  ];
+
   return (
     <footer className="bg-white border-t border-gray-100 py-12">
       <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
@@ -14,11 +24,11 @@ const Footer: React.FC = () => {
             className="h-16 md:h-20 w-auto object-contain mb-3"
             onError={() => setLogoSrc('/logo.svg')}
           />
-          <p className="text-sm text-gray-500 max-w-xs">Authentic Caribbean Flavors in Raleigh. Experience the taste of the Dominican Republic.</p>
+          <p className="text-sm text-gray-500 max-w-xs">{t('footer.tagline')}</p>
         </div>
 
         <div className="flex flex-wrap justify-center gap-6">
-           {NAV_LINKS.map((link) => {
+           {navLinks.map((link) => {
              const isExternal = link.href.startsWith('http');
              if (isExternal) {
                return (
@@ -47,7 +57,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="text-sm text-gray-400">
-          &copy; {new Date().getFullYear()} All rights reserved.
+          &copy; {new Date().getFullYear()} {t('footer.rights')}
         </div>
       </div>
     </footer>

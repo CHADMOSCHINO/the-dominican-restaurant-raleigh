@@ -1,8 +1,11 @@
 import React from 'react';
 import { MapPin, Phone, Clock, Mail, ExternalLink } from 'lucide-react';
 import { BUSINESS_INFO } from '../constants';
+import { useLanguage } from '../context/LanguageContext';
 
 const InfoSection: React.FC = () => {
+  const { t } = useLanguage();
+  
   return (
     <section id="location" className="relative bg-brand-cream">
       {/* Split Layout */}
@@ -12,11 +15,11 @@ const InfoSection: React.FC = () => {
         <div className="lg:w-1/2 py-20 px-4 md:px-12 lg:px-20 flex flex-col justify-center">
           <div className="max-w-xl mx-auto lg:mx-0">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-brand-dark mb-6">
-              Find Us
+              {t('info.title')}
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed mb-10 border-l-4 border-brand-red pl-4">
-              Located on Capital Blvd, directly across from Chuck E. Cheese. <br/>
-              Ample parking available.
+              {t('info.description')} <br/>
+              {t('info.parking')}
             </p>
 
             <div className="space-y-8">
@@ -26,7 +29,7 @@ const InfoSection: React.FC = () => {
                   <MapPin size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-xl text-brand-dark">Address</h3>
+                  <h3 className="font-bold text-xl text-brand-dark">{t('info.address')}</h3>
                   <p className="text-gray-600 mt-1">{BUSINESS_INFO.address}</p>
                   <p className="text-gray-600">{BUSINESS_INFO.cityStateZip}</p>
                   <a 
@@ -35,7 +38,7 @@ const InfoSection: React.FC = () => {
                     rel="noreferrer"
                     className="inline-flex items-center gap-1 text-brand-red text-sm font-bold mt-2 hover:underline"
                   >
-                    Get Directions <ExternalLink size={14} />
+                    {t('info.directions')} <ExternalLink size={14} />
                   </a>
                 </div>
               </div>
@@ -46,11 +49,11 @@ const InfoSection: React.FC = () => {
                   <Clock size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-xl text-brand-dark">Opening Hours</h3>
+                  <h3 className="font-bold text-xl text-brand-dark">{t('info.hours')}</h3>
                   <div className="mt-1 grid grid-cols-2 gap-x-8 gap-y-1 text-gray-600 text-sm md:text-base">
-                    <span className="font-medium">Mon - Wed</span>
+                    <span className="font-medium">{t('info.monWed')}</span>
                     <span>7:00 AM - 9:00 PM</span>
-                    <span className="font-medium">Thu - Sun</span>
+                    <span className="font-medium">{t('info.thuSun')}</span>
                     <span>7:00 AM - 10:00 PM</span>
                   </div>
                 </div>
@@ -62,13 +65,13 @@ const InfoSection: React.FC = () => {
                   <Phone size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-xl text-brand-dark">Contact</h3>
+                  <h3 className="font-bold text-xl text-brand-dark">{t('info.contact')}</h3>
                   <div className="mt-1 space-y-2">
                     <a href={`tel:${BUSINESS_INFO.phone}`} className="block text-gray-600 hover:text-brand-red transition-colors text-lg font-medium">
-                      {BUSINESS_INFO.phone} <span className="text-sm text-gray-400 font-normal ml-2">(Restaurant)</span>
+                      {BUSINESS_INFO.phone} <span className="text-sm text-gray-400 font-normal ml-2">{t('info.restaurant')}</span>
                     </a>
                     <a href={`tel:${BUSINESS_INFO.managementPhone}`} className="block text-gray-600 hover:text-brand-red transition-colors text-lg font-medium">
-                      {BUSINESS_INFO.managementPhone} <span className="text-sm text-gray-400 font-normal ml-2">(Management)</span>
+                      {BUSINESS_INFO.managementPhone} <span className="text-sm text-gray-400 font-normal ml-2">{t('info.management')}</span>
                     </a>
                   </div>
                 </div>
