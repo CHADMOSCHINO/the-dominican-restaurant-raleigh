@@ -47,22 +47,25 @@ function App() {
 
         <Footer />
 
-        {/* Mobile Floating CTA - Shows only on small screens when scrolled */}
-        <motion.div 
-          initial={{ y: 100 }}
-          animate={{ y: 0 }}
-          className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-40 w-11/12 max-w-sm shadow-2xl"
-        >
-          <a 
-            href={BUSINESS_INFO.onlineOrderLink}
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-3 bg-brand-dark text-white py-4 rounded-full font-bold text-lg border border-white/10"
+        {/* Mobile Floating CTA - Shows only on small screens */}
+        <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 p-4 pb-6 pointer-events-none">
+          <motion.div 
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
+            className="pointer-events-auto max-w-sm mx-auto"
           >
-            <ShoppingBag className="text-brand-red" size={22} />
-            Order Online Now
-          </a>
-        </motion.div>
+            <a 
+              href={BUSINESS_INFO.onlineOrderLink}
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-3 bg-brand-dark text-white py-4 px-6 rounded-full font-bold text-lg border border-white/10 shadow-2xl active:scale-95 transition-transform"
+            >
+              <ShoppingBag className="text-brand-red flex-shrink-0" size={22} />
+              <span>Order Online Now</span>
+            </a>
+          </motion.div>
+        </div>
       </div>
     </BrowserRouter>
   );
