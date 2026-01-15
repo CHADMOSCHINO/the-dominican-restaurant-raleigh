@@ -1,89 +1,28 @@
-# The Dominican Restaurant - Raleigh
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-A modern, responsive website for The Dominican Restaurant in Raleigh, NC.
+## The Dominican Restaurant — Frontend
 
-## Features
+This repo contains **two maintained front-ends**:
 
-- Responsive design that works on all devices
-- Smooth scrolling navigation
-- Animated menu items
-- Mobile-friendly hamburger menu
-- Modern UI with Dominican flag colors
+- **Current (recommended)**: Vite + React (`/`), deploys to Netlify from `dist/`
+- **Legacy static site**: HTML/CSS/JS in `legacy-static/` (kept for reference/backup)
 
-## Deploying to Netlify
+## Run locally (current app)
 
-### Option 1: Deploy via Netlify CLI (Recommended)
+**Prerequisites:**  Node.js
 
-1. Install Netlify CLI globally:
-```bash
-npm install -g netlify-cli
-```
+1. Install dependencies:
+   `npm install`
+2. Run the app:
+   `npm run dev`
 
-2. Login to Netlify:
-```bash
-netlify login
-```
+## Build + deploy (current app)
 
-3. Initialize and deploy:
-```bash
-netlify init
-```
+- **Build**: `npm run build`
+- **Netlify**: build command `npm run build`, publish directory `dist`
 
-Follow the prompts to:
-- Create a new site or link to an existing one
-- Configure build settings (already set in netlify.toml)
-- Deploy the site
+## Legacy app (optional)
 
-4. For subsequent deployments:
-```bash
-netlify deploy --prod
-```
-
-### Option 2: Deploy via Git
-
-1. Initialize a git repository:
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-```
-
-2. Push to GitHub/GitLab/Bitbucket
-
-3. Go to [Netlify](https://app.netlify.com)
-4. Click "Add new site" > "Import an existing project"
-5. Connect your Git provider and select your repository
-6. Netlify will automatically detect the settings from netlify.toml
-7. Click "Deploy site"
-
-### Option 3: Drag and Drop
-
-1. Go to [Netlify](https://app.netlify.com)
-2. Drag and drop this entire folder onto the Netlify dashboard
-3. Your site will be deployed instantly
-
-## Local Development
-
-Simply open `index.html` in your browser, or use a local server:
-
-```bash
-# Using Python
-python -m http.server 8000
-
-# Using Node.js
-npx serve
-```
-
-## Customization
-
-- Update restaurant information in `index.html`
-- Modify colors in `styles.css` (see CSS variables in `:root`)
-- Add more menu items in the menu section
-- Update contact information and hours
-
-## Technologies Used
-
-- HTML5
-- CSS3 (with CSS Grid and Flexbox)
-- Vanilla JavaScript
-- Netlify for hosting
+The legacy static site lives in `legacy-static/`.

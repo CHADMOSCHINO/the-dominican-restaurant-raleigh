@@ -1,0 +1,15 @@
+{
+  "name": "the-dominican-restaurant-raleigh",
+  "version": "1.0.0",
+  "description": "A modern, responsive website for The Dominican Restaurant in Raleigh, NC.",
+  "main": "script.js",
+  "scripts": {
+    "dev": "python3 -m http.server 8000",
+    "build": "node build.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

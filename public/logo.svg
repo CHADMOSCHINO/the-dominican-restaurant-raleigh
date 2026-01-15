@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="240" viewBox="0 0 720 240" role="img" aria-label="The Dominican Restaurant">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#002D62"/>
+      <stop offset="0.5" stop-color="#D92323"/>
+      <stop offset="1" stop-color="#F9F5F0"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="240" rx="32" fill="#1A1A1A"/>
+  <rect x="18" y="18" width="684" height="204" rx="24" fill="url(#g)" opacity="0.12"/>
+  <g fill="#F9F5F0">
+    <text x="56" y="120" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="48" font-weight="800" letter-spacing="0.5">
+      The Dominican Restaurant
+    </text>
+    <text x="56" y="162" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="22" font-weight="600" fill="#D0D0D0" letter-spacing="2">
+      RALEIGH, NC
+    </text>
+  </g>
+  <g>
+    <circle cx="650" cy="120" r="46" fill="#002D62"/>
+    <circle cx="650" cy="120" r="34" fill="#D92323"/>
+    <circle cx="650" cy="120" r="22" fill="#F9F5F0"/>
+  </g>
+</svg>
+

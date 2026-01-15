@@ -1,118 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Dominican Restaurant - Authentic Dominican Cuisine in Raleigh</title>
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Dominican Restaurant - Raleigh, NC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                red: '#D92323',
+                blue: '#002D62',
+                cream: '#F9F5F0',
+                dark: '#1A1A1A',
+              }
+            },
+            fontFamily: {
+              sans: ['Plus Jakarta Sans', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Smooth scroll behavior */
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+<link rel="stylesheet" href="/index.css">
 </head>
-<body>
-    <header>
-        <nav class="navbar">
-            <div class="container">
-                <div class="logo">The Dominican Restaurant</div>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#menu">Menu</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <button class="menu-toggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </nav>
-    </header>
-
-    <main>
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h1>Authentic Dominican Cuisine</h1>
-                <p>Experience the rich flavors of the Dominican Republic in the heart of Raleigh</p>
-                <a href="#menu" class="cta-button">View Menu</a>
-            </div>
-        </section>
-
-        <section id="menu" class="menu-section">
-            <div class="container">
-                <h2>Our Menu</h2>
-                <div class="menu-grid">
-                    <div class="menu-item">
-                        <h3>La Bandera</h3>
-                        <p>Traditional Dominican flag dish with rice, beans, and meat</p>
-                        <span class="price">$14.99</span>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Mofongo</h3>
-                        <p>Mashed plantains with garlic and your choice of protein</p>
-                        <span class="price">$16.99</span>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Chicharrón de Pollo</h3>
-                        <p>Crispy Dominican-style fried chicken</p>
-                        <span class="price">$13.99</span>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Sancocho</h3>
-                        <p>Hearty seven-meat stew with root vegetables</p>
-                        <span class="price">$15.99</span>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Yaroa</h3>
-                        <p>Layered plantains, meat, and cheese</p>
-                        <span class="price">$12.99</span>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Tres Leches</h3>
-                        <p>Classic three-milk cake dessert</p>
-                        <span class="price">$6.99</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="about-section">
-            <div class="container">
-                <h2>About Us</h2>
-                <div class="about-content">
-                    <p>Welcome to The Dominican Restaurant, where we bring the authentic flavors of the Dominican Republic to Raleigh. Our family recipes have been passed down through generations, ensuring every dish captures the true essence of Dominican cuisine.</p>
-                    <p>We use only the freshest ingredients and traditional cooking methods to create meals that transport you straight to the Caribbean.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact-section">
-            <div class="container">
-                <h2>Visit Us</h2>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <h3>Location</h3>
-                        <p>Raleigh, NC</p>
-                    </div>
-                    <div class="contact-item">
-                        <h3>Hours</h3>
-                        <p>Mon-Thu: 11am - 9pm</p>
-                        <p>Fri-Sat: 11am - 10pm</p>
-                        <p>Sunday: 12pm - 8pm</p>
-                    </div>
-                    <div class="contact-item">
-                        <h3>Contact</h3>
-                        <p>Phone: (919) 555-0123</p>
-                        <p>Email: info@thedominican.com</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 The Dominican Restaurant. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+  <body class="bg-brand-cream text-brand-dark antialiased selection:bg-brand-red selection:text-white">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
 </body>
 </html>

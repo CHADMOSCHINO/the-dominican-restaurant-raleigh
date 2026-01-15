@@ -1,0 +1,21 @@
+/* Minimal global styles for the Vite app.
+   Tailwind is loaded via CDN in index.html, but we still want a real CSS file
+   so the /index.css link resolves in production. */
+
+:root {
+  color-scheme: light;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+/* Used by Header.tsx */
+.text-shadow-sm {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+

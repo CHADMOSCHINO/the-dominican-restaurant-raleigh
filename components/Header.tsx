@@ -1,0 +1,150 @@
+import React, { useState, useEffect } from 'react';
+import { Menu, X, ShoppingBag, Phone } from 'lucide-react';
+import { BUSINESS_INFO, NAV_LINKS } from '../constants';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const Header: React.FC = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const headerClass = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    isScrolled 
+      ? 'bg-white/90 backdrop-blur-xl shadow-md py-2 border-b border-white/20' 
+      : 'bg-transparent py-4 md:py-6'
+  }`;
+
+  const linkClass = `text-sm font-bold tracking-wide hover:text-brand-red transition-colors duration-200 ${
+    isScrolled ? 'text-gray-800' : 'text-white shadow-black/20 text-shadow-sm'
+  }`;
+
+  return (
+    <header className={headerClass}>
+      <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
+        {/* Logo Area */}
+        <div className="flex items-center gap-2 z-50 relative">
+          <a href="#" className="flex flex-col group">
+            <img 
+              src={BUSINESS_INFO.logo} 
+              alt={BUSINESS_INFO.name} 
+              className={`object-contain transition-all duration-300 ${
+                isScrolled ? 'h-14 md:h-16' : 'h-16 md:h-24'
+              }`}
+            />
+          </a>
+        </div>
+
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-8">
+          {NAV_LINKS.map((link) => {
+             const isExternal = link.href.startsWith('http');
+             return (
+              <a 
+                key={link.name} 
+                href={link.href} 
+                className={linkClass}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noopener noreferrer" : undefined}
+              >
+                {link.name}
+              </a>
+            );
+          })}
+          <motion.a 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            href={BUSINESS_INFO.onlineOrderLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 bg-brand-red text-white px-6 py-2.5 rounded-full font-bold shadow-lg shadow-brand-red/30 hover:bg-red-700 transition-colors"
+          >
+            <ShoppingBag size={18} />
+            <span>Order Online</span>
+          </motion.a>
+        </nav>
+
+        {/* Mobile Actions */}
+        <div className="md:hidden flex items-center gap-3 z-50">
+           <a 
+            href={`tel:${BUSINESS_INFO.phone}`}
+            className={`flex items-center justify-center w-10 h-10 rounded-full transition-colors ${isScrolled ? 'bg-gray-100 text-brand-dark' : 'bg-white/20 text-white backdrop-blur-sm'}`}
+          >
+            <Phone size={18} />
+          </a>
+          <button 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className={`flex items-center justify-center w-10 h-10 rounded-full transition-colors ${isScrolled ? 'text-brand-dark' : 'text-white'}`}
+          >
+            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, clipPath: "circle(0% at 100% 0%)" }}
+            animate={{ opacity: 1, clipPath: "circle(150% at 100% 0%)" }}
+            exit={{ opacity: 0, clipPath: "circle(0% at 100% 0%)" }}
+            transition={{ type: "spring", damping: 20, stiffness: 100 }}
+            className="absolute top-0 left-0 w-full h-screen bg-white z-40 flex flex-col items-center justify-center gap-8 md:hidden"
+          >
+             {/* Logo in Mobile Menu */}
+            <div className="mb-8">
+               <img 
+                src={BUSINESS_INFO.logo} 
+                alt={BUSINESS_INFO.name} 
+                className="h-24 w-auto object-contain"
+              />
+            </div>
+
+            {NAV_LINKS.map((link) => {
+              const isExternal = link.href.startsWith('http');
+              return (
+                <a 
+                  key={link.name} 
+                  href={link.href} 
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}
+                  className="text-3xl font-serif font-bold text-gray-900 hover:text-brand-red transition-colors text-center px-4"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </a>
+              );
+            })}
+            
+            <div className="h-px w-20 bg-gray-200 my-4" />
+            
+            <a 
+              href={BUSINESS_INFO.onlineOrderLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-brand-red text-white px-8 py-4 rounded-full text-xl font-bold shadow-xl flex items-center gap-3"
+            >
+              <ShoppingBag size={24} />
+              Order Online
+            </a>
+             <a 
+              href={`tel:${BUSINESS_INFO.phone}`}
+              className="text-gray-500 font-medium flex items-center gap-2"
+            >
+              <Phone size={18} />
+              Call to Order
+            </a>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+};
+
+export default Header;
