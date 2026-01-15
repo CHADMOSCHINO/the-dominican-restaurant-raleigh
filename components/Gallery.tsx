@@ -23,12 +23,12 @@ const Gallery: React.FC = () => {
       span: "md:col-span-2 md:row-span-1",
     },
     {
-      src: "https://picsum.photos/seed/tostones_fry/800/800",
+      src: "https://lh3.googleusercontent.com/p/AF1QipMKaYKc8tRKJX0J_qg-GY7F4Cqv7ijYd8NxFK61=s1360-w1360-h1020-rw",
       fallbackSrc: "https://picsum.photos/seed/tostones_fry/800/800",
       span: "md:col-span-1 md:row-span-1",
     },
     {
-      src: "https://picsum.photos/seed/chef_cooking/800/800",
+      src: "https://lh3.googleusercontent.com/p/AF1QipMnkwyoFJNJcQVUFqYoyih9u9p7CYVRTfwuMKXq=s1360-w1360-h1020-rw",
       fallbackSrc: "https://picsum.photos/seed/chef_cooking/800/800",
       span: "md:col-span-1 md:row-span-1",
     },
