@@ -84,6 +84,16 @@ const translations: Record<Language, Record<string, string>> = {
     
     // Language Toggle
     'lang.switch': 'Español',
+
+    // Local Help Bot
+    'bot.open': 'Open help chat',
+    'bot.close': 'Close help chat',
+    'bot.help': 'Help',
+    'bot.title': 'Customer Help',
+    'bot.subtitle': 'Fast answers, no waiting',
+    'bot.placeholder': 'Ask a question…',
+    'bot.send': 'Send message',
+    'bot.localNote': 'This assistant runs locally (no API key).',
   },
   es: {
     // Header
@@ -160,6 +170,16 @@ const translations: Record<Language, Record<string, string>> = {
     
     // Language Toggle
     'lang.switch': 'English',
+
+    // Local Help Bot
+    'bot.open': 'Abrir chat de ayuda',
+    'bot.close': 'Cerrar chat de ayuda',
+    'bot.help': 'Ayuda',
+    'bot.title': 'Ayuda al Cliente',
+    'bot.subtitle': 'Respuestas rápidas, sin esperar',
+    'bot.placeholder': 'Haz una pregunta…',
+    'bot.send': 'Enviar mensaje',
+    'bot.localNote': 'Este asistente funciona localmente (sin API key).',
   },
 };
 

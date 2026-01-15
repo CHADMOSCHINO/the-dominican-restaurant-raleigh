@@ -6,6 +6,7 @@ import { ShoppingBag } from 'lucide-react';
 import { BUSINESS_INFO } from './constants';
 import { motion } from 'framer-motion';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
+import LocalHelpBot from './components/LocalHelpBot';
 
 // Lazy load pages for code splitting
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -52,6 +53,8 @@ const AppContent: React.FC = () => {
         </Suspense>
 
         <Footer />
+
+        <LocalHelpBot />
 
         {/* Mobile Floating CTA - Shows only on small screens */}
         <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 p-4 pb-6 pointer-events-none">
