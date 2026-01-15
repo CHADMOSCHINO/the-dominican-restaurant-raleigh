@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, ShoppingBag, Phone } from 'lucide-react';
 import { BUSINESS_INFO, NAV_LINKS } from '../constants';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -12,7 +13,8 @@ const Header: React.FC = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    // Use passive listener for better scroll performance
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -31,7 +33,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
         {/* Logo Area */}
         <div className="flex items-center gap-2 z-50 relative">
-          <a href="#" className="flex flex-col group">
+          <Link to="/" className="flex flex-col group" aria-label="Go to homepage">
             <img 
               src={logoSrc} 
               alt={BUSINESS_INFO.name} 
@@ -40,23 +42,31 @@ const Header: React.FC = () => {
               }`}
               onError={() => setLogoSrc('/logo.svg')}
             />
-          </a>
+          </Link>
         </div>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((link) => {
-             const isExternal = link.href.startsWith('http');
-             return (
-              <a 
-                key={link.name} 
-                href={link.href} 
-                className={linkClass}
-                target={isExternal ? "_blank" : undefined}
-                rel={isExternal ? "noopener noreferrer" : undefined}
-              >
+            const isExternal = link.href.startsWith('http');
+            if (isExternal) {
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className={linkClass}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {link.name}
+                </a>
+              );
+            }
+
+            return (
+              <Link key={link.name} to={link.href} className={linkClass}>
                 {link.name}
-              </a>
+              </Link>
             );
           })}
           <motion.a 
@@ -111,17 +121,30 @@ const Header: React.FC = () => {
 
             {NAV_LINKS.map((link) => {
               const isExternal = link.href.startsWith('http');
+              if (isExternal) {
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-3xl font-serif font-bold text-gray-900 hover:text-brand-red transition-colors text-center px-4"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.name}
+                  </a>
+                );
+              }
+
               return (
-                <a 
-                  key={link.name} 
-                  href={link.href} 
-                  target={isExternal ? "_blank" : undefined}
-                  rel={isExternal ? "noopener noreferrer" : undefined}
+                <Link
+                  key={link.name}
+                  to={link.href}
                   className="text-3xl font-serif font-bold text-gray-900 hover:text-brand-red transition-colors text-center px-4"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}
-                </a>
+                </Link>
               );
             })}
             

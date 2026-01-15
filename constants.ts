@@ -15,10 +15,10 @@ export const BUSINESS_INFO: BusinessInfo = {
 };
 
 export const NAV_LINKS = [
-  { name: 'Home', href: '#hero' },
-  { name: 'Menu', href: '#menu' },
+  { name: 'Home', href: '/' },
+  { name: 'Menu', href: '/menu' },
   { name: 'Order Delivery/Pickup', href: 'https://www.clover.com/online-ordering/the-dominican-restaurant-raleigh' },
-  { name: 'Gallery', href: '#gallery' },
+  { name: 'Gallery', href: '/gallery' },
 ];
 
 export const FEATURES = [

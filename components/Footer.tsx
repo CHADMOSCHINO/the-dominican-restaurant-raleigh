@@ -1,5 +1,6 @@
 import React from 'react';
 import { BUSINESS_INFO, NAV_LINKS } from '../constants';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   const [logoSrc, setLogoSrc] = React.useState(BUSINESS_INFO.logo);
@@ -19,17 +20,29 @@ const Footer: React.FC = () => {
         <div className="flex flex-wrap justify-center gap-6">
            {NAV_LINKS.map((link) => {
              const isExternal = link.href.startsWith('http');
+             if (isExternal) {
+               return (
+                 <a
+                   key={link.name}
+                   href={link.href}
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="text-gray-500 hover:text-brand-red transition-colors font-medium text-sm"
+                 >
+                   {link.name}
+                 </a>
+               );
+             }
+
              return (
-              <a 
-                key={link.name}
-                href={link.href}
-                target={isExternal ? "_blank" : undefined}
-                rel={isExternal ? "noopener noreferrer" : undefined}
-                className="text-gray-500 hover:text-brand-red transition-colors font-medium text-sm"
-              >
-                {link.name}
-              </a>
-             )
+               <Link
+                 key={link.name}
+                 to={link.href}
+                 className="text-gray-500 hover:text-brand-red transition-colors font-medium text-sm"
+               >
+                 {link.name}
+               </Link>
+             );
            })}
         </div>
 

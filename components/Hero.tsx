@@ -18,9 +18,12 @@ const Hero: React.FC = () => {
       {/* Parallax Background */}
       <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop" 
+          src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop" 
           alt="Dominican Feast" 
           className="w-full h-full object-cover opacity-80"
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/50 to-brand-dark/30" />
       </motion.div>
