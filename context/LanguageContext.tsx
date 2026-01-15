@@ -55,7 +55,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Gallery
     'gallery.tagline': 'Vibe Check',
     'gallery.title': 'Eat. Drink. Relax.',
-    'gallery.instagram': '@TheDominicanRestaurant',
+    'gallery.instagram': '@dominicanrestaurant_nc',
     'gallery.follow': 'Follow us on Instagram',
     'gallery.caption': 'The Dominican Experience',
     
@@ -141,7 +141,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Gallery
     'gallery.tagline': 'El Ambiente',
     'gallery.title': 'Come. Bebe. Relájate.',
-    'gallery.instagram': '@TheDominicanRestaurant',
+    'gallery.instagram': '@dominicanrestaurant_nc',
     'gallery.follow': 'Síguenos en Instagram',
     'gallery.caption': 'La Experiencia Dominicana',
     

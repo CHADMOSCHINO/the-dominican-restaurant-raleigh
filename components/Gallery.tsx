@@ -5,6 +5,8 @@ import { useLanguage } from '../context/LanguageContext';
 
 const Gallery: React.FC = () => {
   const { t } = useLanguage();
+  const instagramUrl = 'https://www.instagram.com/dominicanrestaurant_nc/?hl=en';
+
   // Using picsum seeds that return distinct food/restaurant vibes
   const images = [
     {
@@ -42,7 +44,12 @@ const Gallery: React.FC = () => {
             <h2 className="text-brand-red font-bold tracking-widest uppercase mb-2">{t('gallery.tagline')}</h2>
             <h3 className="font-serif text-4xl md:text-5xl font-bold">{t('gallery.title')}</h3>
            </div>
-           <a href="#" className="hidden md:flex items-center gap-2 text-gray-400 hover:text-white transition-colors mt-4 md:mt-0">
+           <a
+             href={instagramUrl}
+             target="_blank"
+             rel="noopener noreferrer"
+             className="hidden md:flex items-center gap-2 text-gray-400 hover:text-white transition-colors mt-4 md:mt-0"
+           >
              <Instagram size={20} />
              {t('gallery.instagram')}
            </a>
@@ -58,23 +65,41 @@ const Gallery: React.FC = () => {
               transition={{ delay: idx * 0.1 }}
               className={`relative group overflow-hidden rounded-2xl ${img.span}`}
             >
-              <img 
-                src={img.src} 
-                alt="Gallery" 
-                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                loading="lazy"
-                decoding="async"
-                referrerPolicy="no-referrer"
-                crossOrigin="anonymous"
-                onError={(e) => {
-                  // If the host blocks hotlinking for some visitors, don't leave a blank tile.
-                  const el = e.currentTarget;
-                  if (el.src !== img.fallbackSrc) {
-                    el.src = img.fallbackSrc;
-                  }
-                }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+              <a
+                href={instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open Instagram ${t('gallery.instagram')}`}
+                className="block w-full h-full"
+              >
+                <img 
+                  src={img.src} 
+                  alt="Gallery" 
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  loading="lazy"
+                  decoding="async"
+                  referrerPolicy="no-referrer"
+                  crossOrigin="anonymous"
+                  onError={(e) => {
+                    // If the host blocks hotlinking for some visitors, don't leave a blank tile.
+                    const el = e.currentTarget;
+                    if (el.src !== img.fallbackSrc) {
+                      el.src = img.fallbackSrc;
+                    }
+                  }}
+                />
+
+                {/* Watermark footer link */}
+                <div className="absolute left-0 right-0 bottom-0 p-4">
+                  <div className="inline-flex items-center gap-2 text-white/90 bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-bold border border-white/10">
+                    <Instagram size={14} />
+                    <span>{t('gallery.instagram')}</span>
+                  </div>
+                </div>
+              </a>
+
+              {/* Caption overlay (hover) */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6 pointer-events-none">
                 <span className="text-white font-bold tracking-wide">{t('gallery.caption')}</span>
               </div>
             </motion.div>
@@ -82,7 +107,12 @@ const Gallery: React.FC = () => {
         </div>
         
         <div className="mt-8 text-center md:hidden">
-          <a href="#" className="inline-flex items-center gap-2 text-gray-400">
+          <a
+            href={instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-gray-400"
+          >
              <Instagram size={20} />
              {t('gallery.follow')}
            </a>
