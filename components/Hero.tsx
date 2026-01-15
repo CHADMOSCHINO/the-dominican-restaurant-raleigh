@@ -20,7 +20,7 @@ const Hero: React.FC = () => {
       {/* Parallax Background */}
       <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop" 
+          src="/hero-bg.jpg" 
           alt="Dominican Feast" 
           className="w-full h-full object-cover opacity-80"
           loading="eager"
