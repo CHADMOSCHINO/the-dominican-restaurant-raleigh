@@ -7,9 +7,9 @@ const Gallery: React.FC = () => {
   const { t } = useLanguage();
   // Using picsum seeds that return distinct food/restaurant vibes
   const images = [
-    { src: "https://picsum.photos/seed/dominican_table/800/800", span: "md:col-span-1 md:row-span-1" },
-    { src: "https://picsum.photos/seed/mofongo_plate/800/800", span: "md:col-span-1 md:row-span-2" },
-    { src: "https://picsum.photos/seed/restaurant_vibes/800/400", span: "md:col-span-2 md:row-span-1" },
+    { src: "https://lh3.googleusercontent.com/p/AF1QipPco2uXzhBRsV-vLPxUiAqerTCPaN3U5GbykS4a=s1360-w1360-h1020-rw", span: "md:col-span-1 md:row-span-1" },
+    { src: "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwvxyl9QCnyybi1vOMepqoodXMaKv9X9tjpJ-j5jEiE30drGckpr9YPJ6lhUZ3mJxenroLcIwqrrJjVPKcmpW3IclSLHQ54-i2EHA2G5vzSYWvxaHoplmv-NwdDxz9k0Ap89ltl=s1360-w1360-h1020-rw", span: "md:col-span-1 md:row-span-2" },
+    { src: "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwHelU4am64l458U6Lnktfh-AAAJ5qipspchEgNx6vN-v7EvvcJTq_L07fpBA4LyC-dADQlqWah8ns_LUa2gdlI3dRiq86Wgkp8MHSjU8aFiq39dXvBxVlvbg6kuGQqirM0H6iWhW1KXnic=s1360-w1360-h1020-rw", span: "md:col-span-2 md:row-span-1" },
     { src: "https://picsum.photos/seed/tostones_fry/800/800", span: "md:col-span-1 md:row-span-1" },
     { src: "https://picsum.photos/seed/chef_cooking/800/800", span: "md:col-span-1 md:row-span-1" },
   ];

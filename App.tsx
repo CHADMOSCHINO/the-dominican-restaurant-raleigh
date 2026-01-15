@@ -28,7 +28,8 @@ const PageLoader: React.FC = () => {
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
   React.useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Use instant scroll for snappier navigation (especially on mobile).
+    window.scrollTo({ top: 0, behavior: 'auto' });
   }, [pathname]);
   return null;
 };

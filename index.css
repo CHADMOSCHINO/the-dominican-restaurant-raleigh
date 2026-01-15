@@ -1,12 +1,13 @@
-/* Minimal global styles for the Vite app.
-   Tailwind is loaded via CDN in index.html, but we still want a real CSS file
-   so the /index.css link resolves in production. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   color-scheme: light;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
