@@ -7,6 +7,10 @@ type Category = 'specials' | 'mofongo' | 'street' | 'breakfast' | 'drinks';
 
 const MenuSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<Category>('specials');
+  const [promoImageOk, setPromoImageOk] = useState(true);
+
+  // Place the provided image at: public/Dominican_Restaurant_1_.png
+  const promoImageSrc = '/Dominican_Restaurant_1_.png';
 
   const categories = [
     { id: 'specials', label: 'Weekly Specials', icon: Calendar },
@@ -178,21 +182,33 @@ const MenuSection: React.FC = () => {
              {/* Drinks Layout */}
              {activeCategory === 'drinks' && (
               <div className="max-w-3xl mx-auto">
-                 {/* Beer Special Banner */}
-                 <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-8 rounded-2xl shadow-xl text-center mb-10 relative overflow-hidden">
-                   <div className="relative z-10">
-                     <h3 className="font-serif text-3xl font-bold mb-2">Beer Bucket Special</h3>
-                     <p className="text-5xl font-black text-yellow-400 drop-shadow-md mb-2">6 for $25.00</p>
-                     <p className="text-blue-100 font-medium tracking-widest">MONDAY - WEDNESDAY</p>
-                     <div className="mt-4 flex flex-wrap justify-center gap-2 text-xs opacity-80">
+                {/* Beer Special Photo Banner (provided asset) */}
+                {promoImageOk ? (
+                  <div className="rounded-2xl overflow-hidden shadow-xl mb-10 border border-gray-100 bg-white">
+                    <img
+                      src={promoImageSrc}
+                      alt="Beer bucket special promo"
+                      className="w-full h-[220px] md:h-[300px] object-cover"
+                      loading="lazy"
+                      onError={() => setPromoImageOk(false)}
+                    />
+                  </div>
+                ) : (
+                  <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-8 rounded-2xl shadow-xl text-center mb-10 relative overflow-hidden">
+                    <div className="relative z-10">
+                      <h3 className="font-serif text-3xl font-bold mb-2">Beer Bucket Special</h3>
+                      <p className="text-5xl font-black text-yellow-400 drop-shadow-md mb-2">6 for $25.00</p>
+                      <p className="text-blue-100 font-medium tracking-widest">MONDAY - WEDNESDAY</p>
+                      <div className="mt-4 flex flex-wrap justify-center gap-2 text-xs opacity-80">
                         <span className="border border-white/30 px-2 py-1 rounded">Corona</span>
                         <span className="border border-white/30 px-2 py-1 rounded">Heineken</span>
                         <span className="border border-white/30 px-2 py-1 rounded">Presidente</span>
                         <span className="border border-white/30 px-2 py-1 rounded">Modelo</span>
-                     </div>
-                   </div>
-                   <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-10 -mt-10 blur-2xl"></div>
-                 </div>
+                      </div>
+                    </div>
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-10 -mt-10 blur-2xl"></div>
+                  </div>
+                )}
 
                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {MENU_DATA.drinks.map((item, i) => (

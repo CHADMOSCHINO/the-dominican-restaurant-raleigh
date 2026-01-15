@@ -11,7 +11,8 @@ export const BUSINESS_INFO: BusinessInfo = {
   onlineOrderLink: "https://www.clover.com/online-ordering/the-dominican-restaurant-raleigh",
   mapEmbedUrl: "https://maps.google.com/maps?q=3601+Capital+Blv+suite+107+Raleigh+NC+27604&t=&z=15&ie=UTF8&iwloc=&output=embed",
   // Public asset served by Vite/Netlify
-  logo: "/logo.svg"
+  // Google Drive direct link (fallback handled in Header/Footer)
+  logo: "https://drive.google.com/uc?export=view&id=1N4VCD6VAxu--NM55BUqF6AQ1Q7hUqZ7i"
 };
 
 export const NAV_LINKS = [

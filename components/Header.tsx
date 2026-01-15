@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [logoSrc, setLogoSrc] = useState(BUSINESS_INFO.logo);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,11 +33,12 @@ const Header: React.FC = () => {
         <div className="flex items-center gap-2 z-50 relative">
           <a href="#" className="flex flex-col group">
             <img 
-              src={BUSINESS_INFO.logo} 
+              src={logoSrc} 
               alt={BUSINESS_INFO.name} 
               className={`object-contain transition-all duration-300 ${
                 isScrolled ? 'h-14 md:h-16' : 'h-16 md:h-24'
               }`}
+              onError={() => setLogoSrc('/logo.svg')}
             />
           </a>
         </div>
@@ -100,9 +102,10 @@ const Header: React.FC = () => {
              {/* Logo in Mobile Menu */}
             <div className="mb-8">
                <img 
-                src={BUSINESS_INFO.logo} 
+                src={logoSrc} 
                 alt={BUSINESS_INFO.name} 
                 className="h-24 w-auto object-contain"
+                onError={() => setLogoSrc('/logo.svg')}
               />
             </div>
 
